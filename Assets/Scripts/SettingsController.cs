@@ -37,17 +37,14 @@ public class SettingsController : MonoBehaviour
     public float difficulty { get; set; }
     bool isShowingTips;
     bool isSplittscreen;
-
+    public float speedDivider;
+    public float sightMultiplier;
     #endregion
 
     #region Controls
     public PlayerController[] playerControllers;
     #endregion
 
-    private void Start()
-    {
-
-    }
 
     public void StillToAssign(float _value)
     {
@@ -67,13 +64,7 @@ public class SettingsController : MonoBehaviour
 
     bool ValueToBool(float _value)
     {
-        if (_value > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (_value > 0) return true;
+        return false;
     }
 }

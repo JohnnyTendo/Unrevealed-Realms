@@ -18,7 +18,8 @@ public class KeyBinder : MonoBehaviour
         { Enumerators.Action.up, KeyCode.W },
         { Enumerators.Action.down, KeyCode.S },
         { Enumerators.Action.confirm, KeyCode.Return },
-        { Enumerators.Action.cancel, KeyCode.Escape }
+        { Enumerators.Action.cancel, KeyCode.Escape },
+        { Enumerators.Action.start, KeyCode.Escape }
     };
 
     Stack<KeyValuePair<Enumerators.Action, KeyCode>> stack;

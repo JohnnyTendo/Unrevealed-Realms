@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Enumerators : MonoBehaviour
 {
-    public enum Action { up, down, confirm, cancel }
+    public enum Action { left, right, up, down, confirm, cancel, start }
 }

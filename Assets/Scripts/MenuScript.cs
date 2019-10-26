@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,6 +48,13 @@ public class MenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (activePageIndex == 0)
+        {
+            foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKeyDown(kcode)) Debug.Log("Pressed: " + kcode.ToString());
+            }
+        }
         if (activePageIndex == 2)
         {
             if (Input.GetKeyDown(KeyCode.Return))
@@ -55,7 +63,6 @@ public class MenuScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Debug.Log("S pressed");
                 if (activeButtonIndex < buttons.Length - 1)
                 {
                     activeButtonIndex++;
@@ -64,7 +71,6 @@ public class MenuScript : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("W pressed");
                 if (activeButtonIndex >= 1)
                 {
                     activeButtonIndex--;
@@ -81,7 +87,6 @@ public class MenuScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Debug.Log("S pressed");
                 if (activeOptionsIndex < options.Length - 1)
                 {
                     activeOptionsIndex++;
@@ -90,7 +95,6 @@ public class MenuScript : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("W pressed");
                 if (activeOptionsIndex >= 1)
                 {
                     activeOptionsIndex--;
@@ -110,7 +114,6 @@ public class MenuScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Debug.Log("S pressed");
                 if (activeOptionsIndex < options.Length - 1)
                 {
 
@@ -118,7 +121,6 @@ public class MenuScript : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("W pressed");
                 if (activeOptionsIndex >= 1)
                 {
 
@@ -133,7 +135,6 @@ public class MenuScript : MonoBehaviour
         { 
             if (Event.current.type == EventType.MouseDown)
             {
-                Debug.Log("Mouse pressed");
                 activePageIndex++;
                 UpdateItemCollection(activePageIndex, pages, activePage);
             }
@@ -181,13 +182,11 @@ public class MenuScript : MonoBehaviour
     public void NewGame()
     {
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        Debug.Log("New Game started");
     }
 
     public void Continue()
     {
-        //SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        Debug.Log("Game Continued");
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
 
     public void Options()
@@ -218,17 +217,6 @@ public class MenuScript : MonoBehaviour
     void UpdateTextEffects(int _index, GameObject[] _collection, GameObject _activeTarget)
     {
         _activeTarget = _collection[_index];
-        for (int i = 0; i < _collection.Length; i++)
-        {
-            if (_collection[i] != _activeTarget)
-            {
-                _collection[i].GetComponent<ChangeFontScript>().Deactivate();
-            }
-            else
-            {
-                _collection[i].GetComponent<ChangeFontScript>().Activate();
-            }
-        }
         UpdateSideCard(_collection, _activeTarget);
     }
 
