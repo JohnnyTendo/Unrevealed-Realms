@@ -7,9 +7,10 @@ using UnityEngine;
 
 public class KeyBinder : MonoBehaviour
 {
+//Can probably be removed
     [SerializeField]
     public List<Enumerators.Action> helperList;
-
+//Can probably be removed
     [SerializeField]
     public List<KeyCode> helperList2;
 
@@ -77,6 +78,8 @@ public class KeyBinder : MonoBehaviour
         Debug.Log("Assigned " + input + " to " + selected.ToString());
     }
 
+
+//Can probably be removed
     void Helper()
     {
         helperList.Clear();
