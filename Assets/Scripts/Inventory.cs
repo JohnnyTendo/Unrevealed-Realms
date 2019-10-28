@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = _item;
-                string response = _item.name + " has been added in slot " + i;
+                string response = _item.itemName + " has been added in slot " + i;
             }
         }
     }
