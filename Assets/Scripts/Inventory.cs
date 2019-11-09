@@ -9,29 +9,37 @@ public class Inventory : MonoBehaviour
     public Canvas inventoryUi;
     
     //New
-    Item[] items;
+    [SerializeField]
+    public Dictionary<Enumerators.Slot, Item> equipment = new Dictionary<Enumerators.Slot, Item>();
     //EndNew
+
+    //Can probably be removed
+    [SerializeField]
+    public List<Item> helperList;
 
     public void SetUp()
     {
         GameObject holder = Instantiate(prefab);
         inventoryUi = holder.GetComponent<Canvas>();
-        items = new Item[10]();
     }
     
-    public Item GetItem(int _index)
+    public Item GetEquipment(Enumerators.Slot _slot)
     {
-        return items[_index];
+        return equipment[_slot];
     }
-    public string SetItem(Item _item)
+
+    public void SetItem(Item _item)
     {
-        for(int i = 0; i <= items.length; i++)
+        equipment[_item.slot] = _item;
+        Helper();
+    }
+
+    void Helper()
+    {
+        helperList.Clear();
+        foreach (var slot in equipment)
         {
-            if (items[i] == null)
-            {
-                items[i] = _item;
-                string response = _item.itemName + " has been added in slot " + i;
-            }
+            helperList.Add(slot.Value);
         }
     }
 }

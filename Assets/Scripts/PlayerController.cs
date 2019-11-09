@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject avatarPrefab;
 
+    bool isShooting = false;
+
     private void Start()
     {
         string _name = gameObject.name;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(keybinder.binding[Enumerators.Action.start]))
             {
                 //Show inventory
+                keybinder.ExportBinding(postfix);
                 Debug.Log("start triggered by " + name);
             }
             if (Input.GetKey(keybinder.binding[Enumerators.Action.cancel]))
@@ -47,11 +50,19 @@ public class PlayerController : MonoBehaviour
                 //Interact
                 Debug.Log("Cancel triggered by " + name);
             }
-            if (Input.GetKey(keybinder.binding[Enumerators.Action.confirm]))
+            if (!isShooting && Input.GetKey(keybinder.binding[Enumerators.Action.confirm]))
             {
                 //Fire
+                Debug.Log("Player attaked with: " + Dice.Roll((int)Enumerators.Dices.W6,1));
                 Debug.Log("confirm triggered by " + name);
+                isShooting = true;
             }
+            if (isShooting && !Input.GetKey(keybinder.binding[Enumerators.Action.confirm]))
+            {
+                //Reset Fire when button is released
+                isShooting = false;
+            }
+
         }
     }
 
@@ -64,5 +75,6 @@ public class PlayerController : MonoBehaviour
         isCreated = true;
         inventory.SetUp();
         cameraContainer.GetComponent<CameraScript>().ToggleCamera(character.gameObject);
+        keybinder.ImportBinding();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +44,6 @@ public class SettingsController : MonoBehaviour
     #region Controls
     public PlayerController[] playerControllers;
     #endregion
-
 
     public void StillToAssign(float _value)
     {

@@ -28,4 +28,9 @@ public class Character : MonoBehaviour
         player = _player;
         active = true;
     }
+
+    public PlayerController GetPlayer()
+    {
+        return player;
+    }
 }
