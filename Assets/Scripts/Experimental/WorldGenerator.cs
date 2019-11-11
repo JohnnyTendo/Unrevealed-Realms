@@ -40,5 +40,6 @@ public class WorldGenerator : MonoBehaviour
         _tile.x = (int)lastPos.x;
         _tile.value = (int)Random.Range(0, 10);
         world.Add(_tile.x, _tile);
+        GetX();
     }
 }
