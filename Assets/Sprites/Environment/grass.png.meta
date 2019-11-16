@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 2301827199964536633
     second: grass_tile
+  - first:
+      213: -7248584863845952102
+    second: grass_bush
+  - first:
+      213: 4650913171938482620
+    second: grass_tree
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -105,6 +111,48 @@ TextureImporter:
       bones: []
       spriteID: 2474d5750620c3349aa1aa73d8068854
       internalID: 2301827199964536633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grass_bush
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4c3392496370d4695fe6c0f0a94932
+      internalID: -7248584863845952102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grass_tree
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d1fd2a66a512b44812f5fdf0023a42
+      internalID: 4650913171938482620
       vertices: []
       indices: 
       edges: []

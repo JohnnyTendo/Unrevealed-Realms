@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public float directionInput = 0;
     public bool isLookingRight;
+    public int exp;
+    public int lvl;
+    public int expCap = 100;
     [SerializeField]
     GameObject cameraContainer;
     public Inventory inventory;
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
                 //Fire
                 Debug.Log("Player attaked with: " + Dice.Roll((int)Enumerators.Dices.W6,1));
                 Debug.Log("confirm triggered by " + name);
+                AddExperience(200);
                 isShooting = true;
             }
             if (isShooting && !Input.GetKey(keybinder.binding[Enumerators.Action.confirm]))
@@ -76,5 +80,24 @@ public class PlayerController : MonoBehaviour
         inventory.SetUp();
         cameraContainer.GetComponent<CameraScript>().ToggleCamera(character.gameObject);
         keybinder.ImportBinding();
+    }
+
+    public void AddExperience(int _exp)
+    {
+        exp += _exp;
+        if (exp > expCap)
+        {
+            LevelUp();
+            exp = 0;
+            expCap *= lvl;
+        }
+    }
+
+    void LevelUp()
+    {
+        lvl++;
+        Debug.Log("Level " + lvl + " !!!");
+        //TBA: Adjust Stats
+        WorldGenerator.instance.AddTile();
     }
 }

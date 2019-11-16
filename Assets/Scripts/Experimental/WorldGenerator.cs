@@ -12,7 +12,7 @@ public class WorldGenerator : MonoBehaviour
             instance = this;
     }
     #endregion
-//Not implemented and not ready yet. Not even tested
+
     public GameObject tilePrefab;
     Dictionary<int, Tile> world;
     PlayerController[] players;
@@ -29,17 +29,24 @@ public class WorldGenerator : MonoBehaviour
     void GetX()
     {
         if (addLeft)
+        {
             lastPos.x = -lastPos.x;
+        }
         else
-            lastPos.x = -lastPos.x + 2;
+        {
+            lastPos.x = -lastPos.x + 16;
+        }
+        addLeft = !addLeft;
     }
 
-    void AddTile()
+    public void AddTile()
     {
-        Tile _tile = new Tile();
+        GameObject go = Instantiate(tilePrefab);
+        Tile _tile = go.GetComponent<Tile>();
         _tile.x = (int)lastPos.x;
-        _tile.value = (int)Random.Range(0, 10);
+        _tile.value = (int)Random.Range(0, 2);
         world.Add(_tile.x, _tile);
+        _tile.Activate();
         GetX();
     }
 }
